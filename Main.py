@@ -36,7 +36,7 @@ class Evaluate:
     Returns:
       The data which is popped out if the stack is not empty.
     """
-    it isEmpty()==false:
+    if isEmpty()==false:
       print(self.stack[self.top--])
       
 
@@ -59,7 +59,15 @@ class Evaluate:
     Returns:
       True if the expression is valid, else returns False.
     """
-    if expressions:
+    self.operand=0
+    self.operator=0
+    for i in expression:
+      if i>=0  or i<0:
+        push(i)
+        self.operand++
+      else:
+        self.operator++
+    if (self.operator==self.operand+1):
       return true 
     else:
       return false
@@ -73,9 +81,17 @@ class Evaluate:
     Returns:
       The result of evaluated postfix expression.
     """
-    # Write your code here
-
-
+    operators=['+','-','*','/','%']
+    for i in expression:
+      if i in operators:
+        result=eval(str(self.stack[self.top-1]) + i + str(self.stack[self.top])))
+        pop()
+        pop()
+        push(result)
+    if stack.top==0:
+      return result
+        
+    
 # Do not change the following code
 postfix_expression = input()  # Read postfix expression
 tokens = postfix_expression.split()
