@@ -66,9 +66,9 @@ class Evaluate:
     for i in expression:
       if i>=0  or i<0:
         push(i)
-        self.operand++
+        self.operand+=1
       else:
-        self.operator++
+        self.operator+=1
     if (self.operator==self.operand+1):
       return true 
     else:
