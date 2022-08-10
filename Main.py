@@ -64,7 +64,8 @@ class Evaluate:
     self.operand=0
     self.operator=0
     for i in expression:
-      if i>=0  or i<0:
+      operators=['+','-','*','/','%']
+      if i not in operators:
         push(i)
         self.operand+=1
       else:
@@ -86,7 +87,7 @@ class Evaluate:
     operators=['+','-','*','/','%']
     for i in expression:
       if i in operators:
-        result=eval(str(self.stack[self.top-1]) + i + str(self.stack[self.top]))
+        result=eval(self.stack[self.top-1] + i + self.stack[self.top])
         pop()
         pop()
         push(result)
