@@ -37,7 +37,8 @@ class Evaluate:
       The data which is popped out if the stack is not empty.
     """
     if isEmpty()==false:
-      print(self.stack[self.top--])
+      print(self.stack[self.top])
+      self.top+=1
       
 
 
@@ -48,7 +49,8 @@ class Evaluate:
       operand: The operand to be pushed.
     """
     if self.top!=self.size:
-      self.stack[++self.top]=operand
+      self.top+=1
+      self.stack[self.top]=operand
 
 
   def validate_postfix_expression(self, expression):
