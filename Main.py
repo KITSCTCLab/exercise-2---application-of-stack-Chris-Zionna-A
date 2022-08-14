@@ -19,6 +19,6 @@ if Opand==(Optor+1):
             operands.append(result)
         else:
             operands.append(token)
-    print(operands.pop())
+    print(int(operands.pop()))
 else:
     print('Invalid postfix expression')
