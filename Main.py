@@ -8,7 +8,7 @@ for token in tokens:
         Optor+=1
     else:
         Opand+=1
-
+t=""
 if Opand==(Optor+1):
     operands=[]
     for token in tokens:
