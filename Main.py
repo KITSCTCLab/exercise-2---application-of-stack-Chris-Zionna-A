@@ -1,105 +1,24 @@
-class Evaluate:
-  """This class validates and evaluate postfix expression.
-  Attributes:
-      top: An integer which denotes the index of the element at the top of the stack currently.
-      size_of_stack: An integer which represents the size of stack.
-      stack: A List which acts as a Stack.
-  """
-    # Write your code here
-
-
-  def __init__(self, size):
-    """Inits Evaluate with top, size_of_stack and stack.
-    Arguments:
-      size_of_stack: An integer to set the size of stack.
-    """
-    self.top = -1
-    self.size_of_stack = size
-    self.stack = []
-
-
-  def isEmpty(self):
-    """
-    Check whether the stack is empty.
-    Returns:
-      True if it is empty, else returns False.
-    """
-    if self.top==-1:
-      return true
-    else:
-      return false
-
-
-  def pop(self):
-    """
-    Do pop operation if the stack is not empty.
-    Returns:
-      The data which is popped out if the stack is not empty.
-    """
-    if isEmpty()==false:
-      print(self.stack[self.top])
-      self.top+=1
-      
-
-
-  def push(self, operand):
-    """
-    Push the operand to stack if the stack is not full.
-    Arguments:
-      operand: The operand to be pushed.
-    """
-    if self.top!=self.size:
-      self.top+=1
-      self.stack[self.top]=operand
-
-
-  def validate_postfix_expression(self, expression):
-    """
-    Check whether the expression is a valid postfix expression.
-    Arguments:
-      expression: A String which represents the expression to be validated.
-    Returns:
-      True if the expression is valid, else returns False.
-    """
-    self.operand=0
-    self.operator=0
-    for i in expression:
-      operators=['+','-','*','/','%']
-      if i not in operators:
-        push(i)
-        self.operand+=1
-      else:
-        self.operator+=1
-    if (self.operator==self.operand+1):
-      return true 
-    else:
-      return false
-
-
-  def evaluate_postfix_expression(self, expression):
-    """
-    Evaluate the postfix expression
-    Arguments:
-      expression: A String which represents the the expression to be evaluated
-    Returns:
-      The result of evaluated postfix expression.
-    """
-    operators=['+','-','*','/','%']
-    for i in expression:
-      if i in operators:
-        result=eval(self.stack[self.top-1] + i + self.stack[self.top])
-        pop()
-        pop()
-        push(result)
-    if stack.top==0:
-      return result
-        
-    
-# Do not change the following code
 postfix_expression = input()  # Read postfix expression
 tokens = postfix_expression.split()
-evaluate = Evaluate(len(tokens))
-if evaluate.validate_postfix_expression(tokens):
-    print(evaluate.evaluate_postfix_expression(tokens))
+operators=["+","-","*","/","^"]
+Opand=0
+Optor=0
+for token in tokens:
+    if token in operators:
+        Optor+=1
+    else:
+        Opand+=1
+
+if Opand==(Optor+1):
+    operands=[]
+    for token in tokens:
+        if token in operators:
+            rightOp=operands.pop()
+            leftOp=operands.pop()
+            result=str(eval(leftOp+token+rightOp))
+            operands.append(result)
+        else:
+            operands.append(token)
+    print(operands.pop())
 else:
     print('Invalid postfix expression')
