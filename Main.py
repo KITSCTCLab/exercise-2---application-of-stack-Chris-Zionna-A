@@ -1,6 +1,3 @@
-import re
-
-
 postfix_expression = input()  # Read postfix expression
 tokens = postfix_expression.split()
 operators=["+","-","*","/","^"]
@@ -25,7 +22,7 @@ if Opand==(Optor+1):
             operands.append(result)
         else:
             if '.' in token:
-                i=result.index(".")
+                i=token.index(".")
                 t=token[0:i]
             operands.append(t)
     print(operands.pop())
